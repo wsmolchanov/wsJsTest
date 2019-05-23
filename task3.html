@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Example 1. в примере используются примитивы, каждый примитив является по сути новым объектом
+    // Example 2. в примере используются примитивы, каждый примитив является по сути новым объектом
+    // Example 3. не примитив, создаем новый объект
+    let a3 = {
+      name: 'Ivan Ivanov',
+      age: 41,
+    };
+    let b3 = {}
+    for (let key in a3) {
+      b3[key] = a3[key];
+    }
+
+    a3.name = 'Igor Petrov';
+    console.log('a3 = ', a3);
+    console.log('b3 = ', b3);
+
+    // Example 4. b4 присваивается от а4 (а не клонируется), но потом в b4 занисывается НОВЫЙ массив, поэтому проблем нет
+
+    // Example 5
+    let a5 = [1, 2, 3, 4, 5];
+    let b5 = [];
+    a5.forEach(function (itm) {
+      b5.push(itm);
+    });
+    a5[0] = 0;
+    console.log('a5 = ', a5);
+    console.log('b5 = ', b5);
+
+    // Example 6
+    let a6 = [1, 2, 3, 4, 5];
+    let b6 = [];
+    a6.forEach(function (itm) {
+      b6.push(itm);
+    });
+
+    a6.push(6)
+    console.log('a6 = ', a6);
+    console.log('b6 = ', b6);
+
+    // Example 7
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <script>
+    const dayArrays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+
+    let n = null;
+    let day = '';
+
+    while (true) {
+      n = +prompt("Введите день недели [1-7], или другое чтобы выйти.", "");
+
+      if (n >= 1 && n <= 7) {
+        alert(dayArrays[n - 1]);
+      } else {
+        console.log('Выход');
+        break;
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

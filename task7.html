@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task7</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      fieldN: 4,
+      fieldS: "string",
+      fieldN2: 3,
+      fieldS2: "stringed",
+      fieldN3: 5
+    };
+
+    let summ = 0;
+
+    for (let key in obj) {
+      if (typeof obj[key] === "number") {
+        obj[key] *= 2;
+        summ += obj[key];
+      }
+    }
+    alert ("summ=" + summ);
+  </script>
+</body>
+</html>

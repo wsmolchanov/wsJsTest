@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <script>
+    function checkCarNumber(str) {
+      const reg = /^[А,В,Е,К,М,Н,О,Р,С,Т,У,Х]{1}\d{3}[А,В,Е,К,М,Н,О,Р,С,Т,У,Х]{2}\d{2,3}$/;
+      const result = str.match(reg);
+      if (result) {
+        return "Валидный номер";
+      } else {
+        return "Не валидный номер";
+      }
+    }
+    let n = prompt("Введите номер", "");
+
+    console.log(checkCarNumber(n));
+
+  </script>
+</body>
+
+</html>

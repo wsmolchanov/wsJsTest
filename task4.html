@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+           let str = "НННКПРРРРОРППППР";
+           let sum = 0;
+           for (let i = 0; i < str.length; i++) {
+           switch (str[i]) {
+            case 'Н':
+                console.log('Н=', 1);
+                sum +=1;
+                break;
+            case 'К' :
+                console.log('К=', 5);
+                sum +=5;
+                break;
+            case 'П' :
+                console.log('П=', 2);
+                sum +=2;
+                break;
+            case 'Р':
+                console.log('Р=', 4);
+                sum +=4;
+                break;
+            case 'О':
+                console.log('О=', 7);
+                sum +=7;
+                break;
+            };
+           };
+           console.log('sum=', sum);
+        </script>
+    </body>
+    <script ></script>
+</html>

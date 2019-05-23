@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <script>
+    let n = null;
+    let day = '';
+
+    while (true) {
+      n = +prompt("Введите день недели [1-7], или другое чтобы выйти.", "");
+      if (n >= 1 && n <= 7) {
+        switch (n) {
+          case 1:
+            alert("Sunday");
+            break;
+          case 2:
+            alert("Monday");
+            break;
+          case 3:
+            alert("Tuesday");
+            break;
+          case 4:
+            alert("Wednesday");
+            break;
+          case 5:
+            alert("Thursday");
+            break;
+          case 6:
+            alert("Friday");
+            break;
+          case 7:
+            alert("Saturday");
+            break;
+          default:
+            alert("Число должно быть в диапазоне [1-7]");
+            break;
+        }
+      } else {
+        console.log('Выход');
+        break;
+      }
+    }
+
+  </script>
+</body>
+
+</html>

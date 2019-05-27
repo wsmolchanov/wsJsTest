@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Ошибки:
+    // 1) недопустимые символы кавычек - ‘ и ’. Заменить на ', " или `
+    // 2) Закрыть строки символом ";", тем самым завершив выражения.
+    // 3) строка 45, вызов функции не срабатываtn, т.к. тест3 определена в теле другой функции, соответственно в другой области видимости. Вынести определение за функцию
+    // 4) Функция test4 бесконечно вызывает сама себя (бесконечная рекурсия). Закомментировать вызов
+    // 5) Функция test1, test2 никогда не вызывается.
+
+    var p = 20;
+    function test() {
+      P = 30; // Переменная "Р" незадекларирована. => var P = 30;
+      var p = 25;
+      console.log(‘result 0’, p);
+    }
+    function test1() {
+      console.log(‘result 1’, p)
+      test2();
+    }
+    function test2(p) {
+      console.log(‘result 2’, p);
+      test3(p);
+      function test3(k) {
+        var k = 30;
+        console.log(‘result 3’, k)
+      }
+    }
+    function test4(M) {
+      test4(); // <-- бесконечный цикл
+      console.log(‘result 4’, M)
+    }
+    test(); // Функция переписывает переменную "р", результат - 25
+    test4(p) // Если убрать рекурсию, результат - 25
+    test(); // Функция переписывает переменную "р", результат - 25
+    test3(p) // Функция неопределена. Если вынести из test2, результат - 30
+    сonsole.log(‘result 5’, p) // Результат - 25
+
+    сonsole.log('result 5', p) // Результат - 25
+
+  </script>
+</body>
+
+</html>

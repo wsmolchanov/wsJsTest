@@ -1,0 +1,26 @@
+.panelBody{
+  padding: 20px;
+  background-color: #424548;;
+  margin-top: 20px;
+  width: 300px ;
+
+  box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.55);
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+  width: 60px;
+}
+
+.rowPad {
+  padding: 3px;
+}
+
+element.style {
+  margin-left: 0px;
+}
+
+.btn-primary {
+  background-color: #424548;
+}
+

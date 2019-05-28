@@ -1,40 +1,33 @@
 let symbol = '';
 let needEmpty = false;
+let chain = false;
+let oldValue = 0;
 
-function fplus() {
-  symbol = '+';
 
+function faction(sym) {
+  if (chain) {
+    fequally();
+  }
   value = parseInt(document.getElementById("rezult").innerHTML);
-  document.getElementById("arhiv").innerHTML = value + "+";
-  document.getElementById("rezult").innerHTML = "";
+  symbol = sym;
+  document.getElementById("arhiv").innerHTML = value + sym;
+  chain = true;
+  needEmpty = true;
+
 }
 
-function fminus() {
-  symbol = '-';
-  value = parseInt(document.getElementById("rezult").innerHTML);
-  document.getElementById("arhiv").innerHTML = value + "-";
-  document.getElementById("rezult").innerHTML = "";
-}
+function fnumbers(id) {
+  from_id = document.getElementById(id).innerHTML;
+  from_rezult = document.getElementById("rezult").innerHTML;
+  if (needEmpty) {
+    document.getElementById("rezult").innerHTML = "";
+    needEmpty = false;
+  } else {
+    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
+    from_length = from_rezult.length;
+  }
+  document.getElementById("rezult").innerHTML += from_id;
 
-function fmultiply() {
-  symbol = '*';
-  value = parseInt(document.getElementById("rezult").innerHTML);
-  document.getElementById("arhiv").innerHTML = value + "*";
-  document.getElementById("rezult").innerHTML = "";
-}
-
-function fdivide() {
-  symbol = '/';
-  value = parseInt(document.getElementById("rezult").innerHTML);
-  document.getElementById("arhiv").innerHTML = value + "/";
-  document.getElementById("rezult").innerHTML = "";
-}
-
-function fpercent() {
-  symbol = '%';
-  value = parseInt(document.getElementById("rezult").innerHTML);
-  document.getElementById("arhiv").innerHTML = value + "%";
-  document.getElementById("rezult").innerHTML = "";
 }
 
 function fequally() {
@@ -43,6 +36,8 @@ function fequally() {
   value_1 = parseInt(document.getElementById("arhiv").innerHTML, 10);
   value_2 = document.getElementById("rezult").innerHTML;
   value_2 = parseInt(value_2, 10);
+  if (!value_1) { value_1 = oldValue; }
+  else { oldValue = value_2; }
 
   if (symbol === "+") { value_3 = value_1 + value_2; }
   if (symbol === "-") { value_3 = value_1 - value_2; }
@@ -56,140 +51,13 @@ function fequally() {
   value_3 = String(value_3);
   count = value_3.length;
   needEmpty = true;
+  chain = false;
 }
 
 function fdelete() {
+  chain = false;
   document.getElementById("rezult").innerHTML = "0";
   document.getElementById("arhiv").innerHTML = "";
 }
 
 
-function fzero() {
-  from_id = document.getElementById("id0").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function fone() {
-  from_id = document.getElementById("id1").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function ftwo() {
-  from_id = document.getElementById("id2").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function fthree() {
-  from_id = document.getElementById("id3").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function ffour() {
-  from_id = document.getElementById("id4").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function ffive() {
-  from_id = document.getElementById("id5").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-function fsix() {
-  from_id = document.getElementById("id6").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function fseven() {
-  from_id = document.getElementById("id7").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function feight() {
-  from_id = document.getElementById("id8").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}
-
-function fnine() {
-  from_id = document.getElementById("id9").innerHTML;
-  from_rezult = document.getElementById("rezult").innerHTML;
-  if (needEmpty) {
-    document.getElementById("rezult").innerHTML = "";
-    needEmpty = false;
-  } else {
-    if (from_rezult === "0") { document.getElementById("rezult").innerHTML = ""; }
-    from_length = from_rezult.length;
-  }
-  document.getElementById("rezult").innerHTML += from_id;
-}

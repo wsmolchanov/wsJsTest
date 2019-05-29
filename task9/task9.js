@@ -36,7 +36,17 @@ function fequally() {
   value_1 = parseInt(document.getElementById("arhiv").innerHTML, 10);
   value_2 = document.getElementById("rezult").innerHTML;
   value_2 = parseInt(value_2, 10);
-  if (!value_1) { value_1 = oldValue; }
+
+  if (symbol === "") {
+    document.getElementById("rezult").innerHTML = value_2;
+    needEmpty = true;
+    return;
+  }
+
+  if (!value_1) {
+    value_1 = value_2;
+    value_2 = oldValue;
+  }
   else { oldValue = value_2; }
 
   if (symbol === "+") { value_3 = value_1 + value_2; }
@@ -55,9 +65,13 @@ function fequally() {
 }
 
 function fdelete() {
+  symbol = "";
   chain = false;
+  needEmpty = true;
   document.getElementById("rezult").innerHTML = "0";
   document.getElementById("arhiv").innerHTML = "";
 }
+
+
 
 

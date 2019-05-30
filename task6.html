@@ -12,24 +12,18 @@
       for (let i = min; i <= max; i++) {
         arr.push(i);
       };
-      console.log("Array:", arr);
+      console.log("Array:", arr); // необходимо было указать номер массива
       console.log("Length Array:", arr.length);
       return arr;
     };
 
-    let n = prompt("Введите min", "");
-    let m = prompt("Введите max", "");
-    let newArr = createArr(n, m);
+    let min = +prompt("Введите min", "");
+    let max = +prompt("Введите max", "");
+    let newArr = createArr(min, max);
     let clone = newArr.slice();
 
-    clone = clone.filter(function (element) {
-      if (element % 3 === 1) {
-        return true;
-      } else {
-        return false;
-      };
-    });
-    console.log("clone", clone);
+    const filteredArray = clone.filter((el) => el % 3 ===1);
+    console.log("filteredArray", filteredArray);
 
   </script>
 </body>

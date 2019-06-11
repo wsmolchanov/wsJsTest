@@ -1,3 +1,11 @@
+$(document).ready(function() {
+    function addEffect1() {
+        $("#table:hidden").show();
+    }
+});
+
+
+
 function initMap() {
     let input = document.getElementById('pac-input');
 
@@ -61,6 +69,7 @@ function initMap() {
 
 
 function wapi(lat, lng) {
+
     let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
 
     let xhr = new XHR();
@@ -80,17 +89,39 @@ function wapi(lat, lng) {
 }
 
 
-
 function setTable(weatherObject) {
     weatherObject = JSON.parse(weatherObject);
+    let input = document.getElementById("pac-input");
+    let table = document.getElementById("table");
+    // const tr = table.getElementsByTagName("tr");
 
-    let table = document.getElementById('table');
-
+    let tableHeader = table.getElementsByClassName("header")[0];
+    if (input.value.length > 0) {
+        if (tableHeader.classList.contains("hideHeader")) {
+            tableHeader.classList.remove("hideHeader");
+        }
+    } else {
+        if (!tableHeader.classList.contains("hideHeader")) {
+            tableHeader.classList.add("hideHeader");
+        }
+    }
     let cells = table.querySelectorAll('td');
 
     weatherObject.list.forEach((element, index) => {
-        cells[index + index * 2].innerHTML = element.dt_txt;
-        cells[index + index * 2 + 1].innerHTML = Math.floor(element.main.temp - 273);
-        cells[index + index * 2 + 2].innerHTML = element.weather[0].description;
+
+        const tr = document.createElement('tr');
+        const td1 = document.createElement('td');
+        td1.innerHTML = element.dt_txt;
+        tr.appendChild(td1);
+
+        const td2 = document.createElement('td');
+        td2.innerHTML = Math.floor(element.main.temp - 273);
+        tr.appendChild(td2);
+
+        const td3 = document.createElement('td');
+        td3.innerHTML = element.weather[0].description;
+        tr.appendChild(td3);
+
+        table.appendChild(tr);
     });
 }

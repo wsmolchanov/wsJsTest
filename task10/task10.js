@@ -1,19 +1,8 @@
-$(document).ready(function() {
-    function addEffect1() {
-        $("#table:hidden").show();
-    }
-});
-
-
-
 function initMap() {
-    let input = document.getElementById('pac-input');
-
-    // map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+    let input = $('#pac-input').get(0);
 
     let autocomplete = new google.maps.places.Autocomplete(input);
 
-    // Set the data fields to return when the user selects a place.
     autocomplete.setFields(
         ['address_components', 'geometry', 'icon', 'name']);
 
@@ -28,8 +17,6 @@ function initMap() {
 
 
         if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
             window.alert("No details available for input: '" + place.name + "'");
             return;
         }
@@ -43,8 +30,6 @@ function initMap() {
         }
     });
 
-    // Sets a listener on a radio button to change the filter type on Places
-    // Autocomplete.
     function setupClickListener(id, types) {
         let radioButton = document.getElementById(id);
         radioButton.addEventListener('click', function() {
@@ -58,70 +43,47 @@ function initMap() {
     setupClickListener('changetype-geocode', ['geocode']);
     setupClickListener('changetype-geocode', ['geocode']);
 
-    document.getElementById('use-strict-bounds')
-        .addEventListener('click', function() {
-            console.log('Checkbox clicked! New state=' + this.checked);
-            autocomplete.setOptions({
-                strictBounds: this.checked
-            });
+    $('#use-strict-bounds').click(function() {
+        console.log('Checkbox clicked! New state=' + this.checked);
+        autocomplete.setOptions({
+            strictBounds: this.checked
         });
+    });
 }
 
 
 function wapi(lat, lng) {
 
-    let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-
-    let xhr = new XHR();
-
-    // (2) запрос на другой домен :)
+    var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&appid=7552cb9f95f273b6eaa304fc8b5f5e8f', true);
-
     xhr.onload = function() {
         setTable(this.responseText);
-    }
-
-    xhr.onerror = function() {
-        console.log('Error:', this.status);
-    }
-
-    xhr.send();
+    };
+    xhr.send(null);
 }
 
 
 function setTable(weatherObject) {
     weatherObject = JSON.parse(weatherObject);
-    let input = document.getElementById("pac-input");
-    let table = document.getElementById("table");
-    // const tr = table.getElementsByTagName("tr");
+    let input = $('#pac-input').get(0);
+    let table = $('#table');
 
-    let tableHeader = table.getElementsByClassName("header")[0];
+    let tableHeader = $(table.find('tr').get(0));
+
     if (input.value.length > 0) {
-        if (tableHeader.classList.contains("hideHeader")) {
-            tableHeader.classList.remove("hideHeader");
-        }
+        tableHeader.removeClass("hideHeader");
     } else {
-        if (!tableHeader.classList.contains("hideHeader")) {
-            tableHeader.classList.add("hideHeader");
-        }
+        tableHeader.addClass("hideHeader");
     }
-    let cells = table.querySelectorAll('td');
 
-    weatherObject.list.forEach((element, index) => {
-
-        const tr = document.createElement('tr');
-        const td1 = document.createElement('td');
-        td1.innerHTML = element.dt_txt;
-        tr.appendChild(td1);
-
-        const td2 = document.createElement('td');
-        td2.innerHTML = Math.floor(element.main.temp - 273);
-        tr.appendChild(td2);
-
-        const td3 = document.createElement('td');
-        td3.innerHTML = element.weather[0].description;
-        tr.appendChild(td3);
-
-        table.appendChild(tr);
+    weatherObject.list.forEach(element => {
+        table.append(
+            `<tr>
+                <td>${element.dt_txt}</td>
+                <td>${Math.floor(element.main.temp - 273)}</td>
+                <td>${element.weather[0].description}</td>
+            </tr>
+            `
+        );
     });
 }

@@ -36,11 +36,13 @@ body {
 
 .pac-card {
     margin: 10px 10px 0 0;
+    margin-left: 12px;
+    margin-right: 0px;
     border-radius: 2px 0 0 2px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.418);
     background-color: #fff;
     font-family: Roboto;
 }
@@ -62,14 +64,16 @@ body {
 }
 
 #pac-input {
-    background-color: #fff;
+    background-color: rgb(255, 253, 253);
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
-    margin-left: 12px;
-    padding: 0 11px 0 13px;
     text-overflow: ellipsis;
-    width: 400px;
+    width: 1000px;
+    margin-top: 10px;
+    margin-right: 50px;
+    margin-bottom: 0px;
+    margin-left: 100px;
 }
 
 #pac-input:focus {
@@ -86,4 +90,5 @@ body {
 
 table {
     text-align: center;
+    margin-left: 12px;
 }

@@ -54,26 +54,23 @@ function initMap() {
 
 function wapi(lat, lng) {
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&appid=7552cb9f95f273b6eaa304fc8b5f5e8f', true);
-    xhr.onload = function() {
-        setTable(this.responseText);
-    };
-    xhr.send(null);
+    $.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=7552cb9f95f273b6eaa304fc8b5f5e8f`, function(data) {
+        console.log(data);
+        setTable(data);
+
+    });
 }
 
 
 function setTable(weatherObject) {
-    weatherObject = JSON.parse(weatherObject);
+    // weatherObject = JSON.parse(weatherObject);
     let input = $('#pac-input').get(0);
     let table = $('#table');
 
-    let tableHeader = $(table.find('tr').get(0));
-
     if (input.value.length > 0) {
-        tableHeader.removeClass("hideHeader");
+        table.removeClass("table-striped");
     } else {
-        tableHeader.addClass("hideHeader");
+        table.addClass("table-striped");
     }
 
     weatherObject.list.forEach(element => {
